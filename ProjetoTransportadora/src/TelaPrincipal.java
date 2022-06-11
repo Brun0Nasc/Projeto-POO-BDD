@@ -26,102 +26,127 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
+        jpnArmazens = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        lbID = new javax.swing.JLabel();
+        btnSalvar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        lblId = new javax.swing.JLabel();
+        lblEndereco = new javax.swing.JLabel();
+        lblNCaminhoes = new javax.swing.JLabel();
+        lblCapacidade = new javax.swing.JLabel();
+        jTextFieldId = new javax.swing.JTextField();
+        jTextFieldEndereco = new javax.swing.JTextField();
+        jTextFieldNCaminhoes = new javax.swing.JTextField();
+        jTextFieldCapacidade = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
-        jPanel2 = new javax.swing.JPanel();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela Principal");
         setBackground(new java.awt.Color(34, 64, 104));
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTabbedPane1.setBackground(new java.awt.Color(201, 204, 223));
 
-        jPanel1.setBackground(new java.awt.Color(126, 133, 176));
+        jpnArmazens.setBackground(new java.awt.Color(126, 133, 176));
+        jpnArmazens.setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Gerenciamento de Armazéns");
+        jpnArmazens.add(jLabel2);
+        jLabel2.setBounds(10, 11, 260, 22);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("ID:");
-
-        lbID.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lbID.setForeground(new java.awt.Color(255, 255, 255));
-        lbID.setText("0");
-
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        btnSalvar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnSalvar.setText("Salvar");
+        btnSalvar.setToolTipText("Salvar");
+        btnSalvar.setMaximumSize(new java.awt.Dimension(79, 25));
+        btnSalvar.setMinimumSize(new java.awt.Dimension(79, 25));
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
         });
-        jScrollPane1.setViewportView(jList1);
+        jpnArmazens.add(btnSalvar);
+        btnSalvar.setBounds(530, 140, 80, 25);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lbID)))
-                        .addGap(0, 421, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(lbID))
-                .addGap(44, 44, 44)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        btnCancelar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnCancelar.setText("Cancelar");
+        btnCancelar.setToolTipText("Cancelar");
+        jpnArmazens.add(btnCancelar);
+        btnCancelar.setBounds(440, 140, 79, 25);
 
-        jTabbedPane1.addTab("Armazéns", jPanel1);
+        lblId.setBackground(new java.awt.Color(255, 255, 255));
+        lblId.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblId.setForeground(new java.awt.Color(255, 255, 255));
+        lblId.setText("ID:");
+        jpnArmazens.add(lblId);
+        lblId.setBounds(30, 50, 90, 15);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 701, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 469, Short.MAX_VALUE)
-        );
+        lblEndereco.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblEndereco.setForeground(new java.awt.Color(255, 255, 255));
+        lblEndereco.setText("Endereço:");
+        jpnArmazens.add(lblEndereco);
+        lblEndereco.setBounds(30, 80, 90, 15);
 
-        jTabbedPane1.addTab("tab2", jPanel2);
+        lblNCaminhoes.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblNCaminhoes.setForeground(new java.awt.Color(255, 255, 255));
+        lblNCaminhoes.setText("Nº Caminhões:");
+        jpnArmazens.add(lblNCaminhoes);
+        lblNCaminhoes.setBounds(30, 110, 90, 15);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
-        );
+        lblCapacidade.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblCapacidade.setForeground(new java.awt.Color(255, 255, 255));
+        lblCapacidade.setText("Capacidade:");
+        jpnArmazens.add(lblCapacidade);
+        lblCapacidade.setBounds(30, 140, 90, 15);
+        jpnArmazens.add(jTextFieldId);
+        jTextFieldId.setBounds(140, 50, 90, 20);
+        jpnArmazens.add(jTextFieldEndereco);
+        jTextFieldEndereco.setBounds(140, 80, 90, 20);
+        jpnArmazens.add(jTextFieldNCaminhoes);
+        jTextFieldNCaminhoes.setBounds(140, 110, 91, 20);
+        jpnArmazens.add(jTextFieldCapacidade);
+        jTextFieldCapacidade.setBounds(140, 140, 91, 20);
+
+        jTable1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "ID", "Endereço", "Nº Caminhões", "Capacidade"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.setMaximumSize(new java.awt.Dimension(2147483647, 60));
+        jScrollPane1.setViewportView(jTable1);
+
+        jpnArmazens.add(jScrollPane1);
+        jScrollPane1.setBounds(0, 180, 620, 280);
+
+        jTabbedPane1.addTab("Armazéns", jpnArmazens);
+
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 4, 620, 490));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,13 +184,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnSalvar;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JLabel lbID;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextFieldCapacidade;
+    private javax.swing.JTextField jTextFieldEndereco;
+    private javax.swing.JTextField jTextFieldId;
+    private javax.swing.JTextField jTextFieldNCaminhoes;
+    private javax.swing.JPanel jpnArmazens;
+    private javax.swing.JLabel lblCapacidade;
+    private javax.swing.JLabel lblEndereco;
+    private javax.swing.JLabel lblId;
+    private javax.swing.JLabel lblNCaminhoes;
     // End of variables declaration//GEN-END:variables
 }
