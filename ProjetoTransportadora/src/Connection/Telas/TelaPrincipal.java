@@ -1,7 +1,8 @@
 package Connection.Telas;
 
 
-import Connection.Metodos.MetodosArmazem;
+import Connection.Classes.Armazem;
+import Connection.MySql.ArmazemDAO.ArmazemDAO;
 import javax.swing.JOptionPane;
 
 /*
@@ -18,7 +19,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form TelaPrincipal
      */
-    MetodosArmazem m = new MetodosArmazem();
+    Armazem a = new Armazem();
+    ArmazemDAO m = new ArmazemDAO();
     
     public TelaPrincipal() {
         initComponents();
@@ -151,16 +153,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // TODO add your handling code here:
-        if (validaCamposObrigatorios()){
-            
-        } else {
-            JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
-        }
+        salvar();
     }//GEN-LAST:event_btnSalvarActionPerformed
     
     private boolean validaCamposObrigatorios() {
         return !(this.jTextFieldCapacidade.getText().equals("") || this.jTextFieldEndereco.getText().equals("") ||
                 this.jTextFieldId.getText().equals("") || this.jTextFieldNCaminhoes.getText().equals(""));
+    }
+    
+    private void salvar(){
+        if (validaCamposObrigatorios()){
+                a.setEndereco(jTextFieldEndereco.getText());
+                a.setnCaminhoes(Integer.parseInt(jTextFieldNCaminhoes.getText()));
+                a.setCapacidade(Double.parseDouble(jTextFieldCapacidade.getText()));
+                m.salvarDados(a);
+        } else {
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+        }
     }
     /**
      * @param args the command line arguments
