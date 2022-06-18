@@ -2,8 +2,10 @@ package Connection.Telas;
 
 
 import Connection.Classes.Armazem;
-import Connection.MySql.ArmazemDAO.ArmazemDAO;
+import Connection.MySql.DAO.ArmazemDAO;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -24,6 +26,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     
     public TelaPrincipal() {
         initComponents();
+        listarArmazem();
     }
 
     /**
@@ -49,7 +52,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jTextFieldNCaminhoes = new javax.swing.JTextField();
         jTextFieldCapacidade = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbArmazem = new javax.swing.JTable();
+        btnPesquisar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela Principal");
@@ -84,7 +88,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnCancelar.setText("Cancelar");
         btnCancelar.setToolTipText("Cancelar");
         btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jpnArmazens.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 140, -1, -1));
+        jpnArmazens.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 10, -1, -1));
 
         lblId.setBackground(new java.awt.Color(255, 255, 255));
         lblId.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -108,18 +112,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jpnArmazens.add(lblCapacidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 90, -1));
 
         jTextFieldId.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jpnArmazens.add(jTextFieldId, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 90, -1));
+        jpnArmazens.add(jTextFieldId, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 70, -1));
 
         jTextFieldEndereco.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jpnArmazens.add(jTextFieldEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 90, -1));
+        jpnArmazens.add(jTextFieldEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 190, -1));
 
         jTextFieldNCaminhoes.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jpnArmazens.add(jTextFieldNCaminhoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 91, -1));
+        jpnArmazens.add(jTextFieldNCaminhoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 70, -1));
 
         jTextFieldCapacidade.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jpnArmazens.add(jTextFieldCapacidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 91, -1));
+        jpnArmazens.add(jTextFieldCapacidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 70, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbArmazem.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -138,10 +142,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setMaximumSize(new java.awt.Dimension(2147483647, 60));
-        jScrollPane1.setViewportView(jTable1);
+        tbArmazem.setMaximumSize(new java.awt.Dimension(2147483647, 60));
+        jScrollPane1.setViewportView(tbArmazem);
 
         jpnArmazens.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 620, 280));
+
+        btnPesquisar.setText("Pesquisar");
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarActionPerformed(evt);
+            }
+        });
+        jpnArmazens.add(btnPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, 90, -1));
 
         jTabbedPane1.addTab("Armazéns", jpnArmazens);
 
@@ -153,15 +165,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // TODO add your handling code here:
-        salvar();
+        cadastrarArmazem();
     }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        // TODO add your handling code here:
+        listarArmazem();
+    }//GEN-LAST:event_btnPesquisarActionPerformed
     
     private boolean validaCamposObrigatorios() {
         return !(this.jTextFieldCapacidade.getText().equals("") || this.jTextFieldEndereco.getText().equals("") ||
-                this.jTextFieldId.getText().equals("") || this.jTextFieldNCaminhoes.getText().equals(""));
+                 this.jTextFieldNCaminhoes.getText().equals(""));
     }
     
-    private void salvar(){
+    private void cadastrarArmazem(){
         if (validaCamposObrigatorios()){
                 a.setEndereco(jTextFieldEndereco.getText());
                 a.setnCaminhoes(Integer.parseInt(jTextFieldNCaminhoes.getText()));
@@ -169,6 +186,27 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 m.salvarDados(a);
         } else {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+        }
+    }
+    
+    private void listarArmazem(){
+        try {
+           DefaultTableModel model = (DefaultTableModel) tbArmazem.getModel();
+           model.setNumRows(0);
+           
+           ArrayList<Armazem> lista = m.pesquisarFcunionario();
+           
+           for(int i = 0; i < lista.size(); i++){
+               model.addRow(new Object[]{
+                   lista.get(i).getId(),
+                   lista.get(i).getEndereco(),
+                   lista.get(i).getnCaminhoes(),
+                   lista.get(i).getCapacidade() 
+               });
+           }
+           
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Listar valores: " + e);
         }
     }
     /**
@@ -208,11 +246,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextFieldCapacidade;
     private javax.swing.JTextField jTextFieldEndereco;
     private javax.swing.JTextField jTextFieldId;
@@ -222,5 +260,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblEndereco;
     private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblNCaminhoes;
+    private javax.swing.JTable tbArmazem;
     // End of variables declaration//GEN-END:variables
 }
