@@ -4,6 +4,7 @@ package Connection.Telas;
 import Connection.Classes.Armazem;
 import Connection.MySql.DAO.ArmazemDAO;
 import java.util.ArrayList;
+import static javax.management.Query.lt;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -47,13 +48,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lblEndereco = new javax.swing.JLabel();
         lblNCaminhoes = new javax.swing.JLabel();
         lblCapacidade = new javax.swing.JLabel();
-        jTextFieldId = new javax.swing.JTextField();
-        jTextFieldEndereco = new javax.swing.JTextField();
-        jTextFieldNCaminhoes = new javax.swing.JTextField();
-        jTextFieldCapacidade = new javax.swing.JTextField();
+        txtId = new javax.swing.JTextField();
+        txtEndereco = new javax.swing.JTextField();
+        txtCaminhoes = new javax.swing.JTextField();
+        txtCapacidade = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbArmazem = new javax.swing.JTable();
         btnPesquisar = new javax.swing.JButton();
+        btnAlterar = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela Principal");
@@ -85,9 +88,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jpnArmazens.add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, 80, -1));
 
         btnCancelar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnCancelar.setText("Cancelar");
+        btnCancelar.setText("Limpar");
         btnCancelar.setToolTipText("Cancelar");
         btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
         jpnArmazens.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 10, -1, -1));
 
         lblId.setBackground(new java.awt.Color(255, 255, 255));
@@ -111,38 +119,36 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lblCapacidade.setText("Capacidade:");
         jpnArmazens.add(lblCapacidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 90, -1));
 
-        jTextFieldId.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jpnArmazens.add(jTextFieldId, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 70, -1));
+        txtId.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jpnArmazens.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 70, -1));
 
-        jTextFieldEndereco.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jpnArmazens.add(jTextFieldEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 190, -1));
+        txtEndereco.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jpnArmazens.add(txtEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 210, -1));
 
-        jTextFieldNCaminhoes.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jpnArmazens.add(jTextFieldNCaminhoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 70, -1));
+        txtCaminhoes.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jpnArmazens.add(txtCaminhoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 70, -1));
 
-        jTextFieldCapacidade.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jpnArmazens.add(jTextFieldCapacidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 70, -1));
+        txtCapacidade.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jpnArmazens.add(txtCapacidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 70, -1));
 
+        tbArmazem.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tbArmazem.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "ID", "Endereço", "Nº Caminhões", "Capacidade"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+        ));
+        tbArmazem.setToolTipText("");
+        tbArmazem.setMaximumSize(new java.awt.Dimension(2147483647, 60));
+        tbArmazem.getTableHeader().setResizingAllowed(false);
+        tbArmazem.getTableHeader().setReorderingAllowed(false);
+        tbArmazem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbArmazemMouseClicked(evt);
             }
         });
-        tbArmazem.setMaximumSize(new java.awt.Dimension(2147483647, 60));
         jScrollPane1.setViewportView(tbArmazem);
 
         jpnArmazens.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 620, 280));
@@ -155,6 +161,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jpnArmazens.add(btnPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, 90, -1));
 
+        btnAlterar.setText("Alterar");
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
+            }
+        });
+        jpnArmazens.add(btnAlterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 110, 80, -1));
+
+        btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
+        jpnArmazens.add(btnExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 80, 80, -1));
+
         jTabbedPane1.addTab("Armazéns", jpnArmazens);
 
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 4, 620, 490));
@@ -166,23 +188,54 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // TODO add your handling code here:
         cadastrarArmazem();
+        listarArmazem();
+        limparCampos();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
         // TODO add your handling code here:
-        listarArmazem();
+        if(txtId.getText().equals("")){
+            listarArmazem();
+        } else {
+            pesquisaIdArmazem();
+        }
+        
     }//GEN-LAST:event_btnPesquisarActionPerformed
+
+    private void tbArmazemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbArmazemMouseClicked
+        // TODO add your handling code here:
+        carregarCampos();
+    }//GEN-LAST:event_tbArmazemMouseClicked
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        limparCampos();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        // TODO add your handling code here:
+        alterarArmazem();
+        pesquisaIdArmazem();
+        limparCampos();
+    }//GEN-LAST:event_btnAlterarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        // TODO add your handling code here:
+        excluirArmazem();
+        listarArmazem();
+        limparCampos();
+    }//GEN-LAST:event_btnExcluirActionPerformed
     
     private boolean validaCamposObrigatorios() {
-        return !(this.jTextFieldCapacidade.getText().equals("") || this.jTextFieldEndereco.getText().equals("") ||
-                 this.jTextFieldNCaminhoes.getText().equals(""));
+        return !(this.txtCapacidade.getText().equals("") || this.txtEndereco.getText().equals("") ||
+                 this.txtCaminhoes.getText().equals(""));
     }
     
     private void cadastrarArmazem(){
         if (validaCamposObrigatorios()){
-                a.setEndereco(jTextFieldEndereco.getText());
-                a.setnCaminhoes(Integer.parseInt(jTextFieldNCaminhoes.getText()));
-                a.setCapacidade(Double.parseDouble(jTextFieldCapacidade.getText()));
+                a.setEndereco(txtEndereco.getText());
+                a.setnCaminhoes(Integer.parseInt(txtCaminhoes.getText()));
+                a.setCapacidade(Double.parseDouble(txtCapacidade.getText()));
                 m.salvarDados(a);
         } else {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
@@ -194,10 +247,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
            DefaultTableModel model = (DefaultTableModel) tbArmazem.getModel();
            model.setNumRows(0);
            
-           ArrayList<Armazem> lista = m.pesquisarFcunionario();
+           ArrayList<Armazem> lista = m.pesquisarArmazem();
            
            for(int i = 0; i < lista.size(); i++){
-               model.addRow(new Object[]{
+                   model.addRow(new Object[]{
                    lista.get(i).getId(),
                    lista.get(i).getEndereco(),
                    lista.get(i).getnCaminhoes(),
@@ -208,6 +261,69 @@ public class TelaPrincipal extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Listar valores: " + e);
         }
+    }
+    
+    private void pesquisaIdArmazem(){
+        try {
+            DefaultTableModel model = (DefaultTableModel) tbArmazem.getModel();
+            model.setNumRows(0);
+            
+            ArrayList<Armazem> lista = m.pesquisarArmazemId(Integer.parseInt(txtId.getText()));
+            
+            for(int i = 0; i < lista.size(); i++){
+                   model.addRow(new Object[]{
+                   lista.get(i).getId(),
+                   lista.get(i).getEndereco(),
+                   lista.get(i).getnCaminhoes(),
+                   lista.get(i).getCapacidade() 
+               });
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Listar valoresID: " + e);
+        }
+    }
+    
+    private void carregarCampos(){
+        int setar = tbArmazem.getSelectedRow();
+        
+        txtId.setText(tbArmazem.getModel().getValueAt(setar, 0).toString());
+        txtEndereco.setText(tbArmazem.getModel().getValueAt(setar, 1).toString());
+        txtCaminhoes.setText(tbArmazem.getModel().getValueAt(setar, 2).toString());
+        txtCapacidade.setText(tbArmazem.getModel().getValueAt(setar, 3).toString());
+    }
+    
+    private void limparCampos(){
+        txtId.setText("");
+        txtEndereco.setText("");
+        txtCaminhoes.setText("");
+        txtCapacidade.setText("");
+    }
+    
+    private void alterarArmazem(){
+        int id_armazem;
+        String endereco_armazem;
+        int numCaminhoes;
+        double capacidade;
+        
+        id_armazem = Integer.parseInt(txtId.getText());
+        endereco_armazem = txtEndereco.getText();
+        numCaminhoes = Integer.parseInt(txtCaminhoes.getText());
+        capacidade = Double.parseDouble(txtCapacidade.getText());
+        
+        a.setId(id_armazem);
+        a.setEndereco(endereco_armazem);
+        a.setnCaminhoes(numCaminhoes);
+        a.setCapacidade(capacidade);
+        
+        m.alterarArmazem(a);
+    }
+    
+    private void excluirArmazem(){
+        int id_armazem;
+        
+        id_armazem = Integer.parseInt(txtId.getText());
+        
+        m.excluirArmazem(id_armazem);
     }
     /**
      * @param args the command line arguments
@@ -245,21 +361,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextFieldCapacidade;
-    private javax.swing.JTextField jTextFieldEndereco;
-    private javax.swing.JTextField jTextFieldId;
-    private javax.swing.JTextField jTextFieldNCaminhoes;
     private javax.swing.JPanel jpnArmazens;
     private javax.swing.JLabel lblCapacidade;
     private javax.swing.JLabel lblEndereco;
     private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblNCaminhoes;
     private javax.swing.JTable tbArmazem;
+    private javax.swing.JTextField txtCaminhoes;
+    private javax.swing.JTextField txtCapacidade;
+    private javax.swing.JTextField txtEndereco;
+    private javax.swing.JTextField txtId;
     // End of variables declaration//GEN-END:variables
 }
