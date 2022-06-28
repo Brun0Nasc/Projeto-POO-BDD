@@ -5,7 +5,7 @@
 package Connection.MySql.DAO;
 
 import Connection.MySql.ConnectionFactory;
-import Connection.Classes.Armazem;
+import Connection.Classes.Caminhao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
@@ -17,21 +17,19 @@ import java.util.ArrayList;
  *
  * @author Bruno-PC
  */
-public class ArmazemDAO {
-    
+public class CaminhoesDAO {
     Connection con;
     PreparedStatement stmt = null;
     ResultSet rs;
-    ArrayList<Armazem> lista = new ArrayList<>();
+    ArrayList<Caminhao> lista = new ArrayList<>();
     
-    public void salvarDados(Armazem a){
-        String sql = "INSERT INTO armazem (endereco, numero_caminhoes, capacidade) VALUES (?,?,?)";
+    public void salvarDados(Caminhao c){
+        String sql = "INSERT INTO caminhoes (cod_licenca, capacidade) VALUES (?,?)";
         con = ConnectionFactory.getConnection();
         try{
             stmt = con.prepareStatement(sql);
-            stmt.setString(1, a.getEndereco());
-            stmt.setInt(2, a.getnCaminhoes());
-            stmt.setDouble(3, a.getCapacidade());
+            stmt.setInt(1, c.getCod_licenca());
+            stmt.setDouble(2, c.getCapacidade());
             
             stmt.executeUpdate();
             stmt.close();
@@ -43,8 +41,8 @@ public class ArmazemDAO {
         }
     }
     
-    public ArrayList<Armazem> pesquisarArmazem(){
-        String sql = "SELECT * FROM armazem";
+    public ArrayList<Caminhao> pesquisarCaminhoes(){
+        String sql = "SELECT * FROM caminhoes";
         con = ConnectionFactory.getConnection();
         lista.clear();
         try {
@@ -52,18 +50,17 @@ public class ArmazemDAO {
             rs = stmt.executeQuery();
             
             while(rs.next()){
-                Armazem a = new Armazem();
-                a.setId(rs.getInt("id_armazem"));
-                a.setCapacidade(rs.getDouble("capacidade"));
-                a.setnCaminhoes(rs.getInt("numero_caminhoes"));
-                a.setEndereco(rs.getString("endereco"));
+                Caminhao c = new Caminhao();
+                c.setId(rs.getInt("id_caminhao"));
+                c.setCapacidade(rs.getDouble("capacidade"));
+                c.setCod_licenca(rs.getInt("cod_licenca"));
                 
-                lista.add(a);
+                lista.add(c);
             }
             stmt.close();
             
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "ArmazemDAO Pesquisar: " + e);
+            JOptionPane.showMessageDialog(null, "CaminhoesDAO Pesquisar: " + e);
         } finally {
             ConnectionFactory.closeConnection(con, stmt);
         }
@@ -71,8 +68,8 @@ public class ArmazemDAO {
         return lista;
     }
     
-    public ArrayList<Armazem> pesquisarArmazemId(int id){
-        String sql = "SELECT * FROM armazem WHERE id_armazem=?";
+    public ArrayList<Caminhao> pesquisarCaminhao(int id){
+        String sql = "SELECT * FROM caminhoes WHERE id_caminhao=?";
         con = ConnectionFactory.getConnection();
         lista.clear();
         try {
@@ -81,19 +78,18 @@ public class ArmazemDAO {
             rs = stmt.executeQuery();
             
             while(rs.next()){
-                Armazem a = new Armazem();
-                a.setId(rs.getInt("id"));
-                a.setCapacidade(rs.getDouble("capacidade"));
-                a.setnCaminhoes(rs.getInt("numero_caminhoes"));
-                a.setEndereco(rs.getString("endereco"));
+                Caminhao c = new Caminhao();
+                c.setId(rs.getInt("id_caminhao"));
+                c.setCapacidade(rs.getDouble("capacidade"));
+                c.setCod_licenca(rs.getInt("cod_licenca"));
                 
-                lista.add(a);
+                lista.add(c);
             }
             
             stmt.close();
             
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "ArmazemDAO Pesquisar: " + e);
+            JOptionPane.showMessageDialog(null, "CaminhaoDAO Pesquisar: " + e);
         } finally {
             ConnectionFactory.closeConnection(con, stmt);
         }
@@ -101,15 +97,14 @@ public class ArmazemDAO {
         return lista;
     }
     
-    public void alterarArmazem(Armazem armazem){
-        String sql = "UPDATE armazem SET endereco = ?, numero_caminhoes = ?, capacidade = ? WHERE id_armazem = ?";
+    public void alterarCaminhao(Caminhao c){
+        String sql = "UPDATE caminhoes SET cod_licenca = ?, capacidade = ? WHERE id_caminhao = ?";
         con = ConnectionFactory.getConnection();
         try{
             stmt = con.prepareStatement(sql);
-            stmt.setString(1, armazem.getEndereco());
-            stmt.setInt(2, armazem.getnCaminhoes());
-            stmt.setDouble(3, armazem.getCapacidade());
-            stmt.setInt(4, armazem.getId());
+            stmt.setInt(1, c.getCod_licenca());
+            stmt.setDouble(2, c.getCapacidade());
+            stmt.setInt(3, c.getId());
             
             stmt.executeUpdate();
             
@@ -122,8 +117,8 @@ public class ArmazemDAO {
         }
     }
     
-    public void excluirArmazem(int id) {
-        String sql = "DELETE FROM armazem WHERE id_armazem = ?";
+    public void excluirCaminhao(int id) {
+        String sql = "DELETE FROM caminhoes WHERE id_caminhao = ?";
         con = ConnectionFactory.getConnection();
         try {
             stmt = con.prepareStatement(sql);
