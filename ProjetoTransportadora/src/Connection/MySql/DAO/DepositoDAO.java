@@ -22,8 +22,26 @@ public class DepositoDAO {
     ResultSet rs;
     ArrayList<Deposito> lista = new ArrayList<>();
     
+    public void salvarDeposito(Deposito d){
+        String sql = "INSERT INTO deposito (capacidade, endereco) VALUES (?,?)";
+        con = ConnectionFactory.getConnection();
+        try{
+            stmt = con.prepareStatement(sql);
+            stmt.setDouble(1, d.getCapacidade());
+            stmt.setString(2, d.getEndereco());
+            
+            stmt.executeUpdate();
+            stmt.close();
+            JOptionPane.showMessageDialog(null, "Dados salvos com sucesso!");
+        } catch (SQLException e){
+            JOptionPane.showMessageDialog(null, "Erro ao salvar os dados" + e.toString());
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
+    
      public ArrayList<Deposito> pesquisarDepositos(){
-        String sql = "SELECT * FROM depositos";
+        String sql = "SELECT * FROM deposito";
         con = ConnectionFactory.getConnection();
         lista.clear();
         try {
