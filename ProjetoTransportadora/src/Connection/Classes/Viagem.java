@@ -13,6 +13,15 @@ public class Viagem {
     private int cod_licenca;
     private int numero_viagem;
     private double peso;
+    private int id_deposito;
+
+    public int getId_deposito() {
+        return id_deposito;
+    }
+
+    public void setId_deposito(int id_deposito) {
+        this.id_deposito = id_deposito;
+    }
     private String endereco;
 
     public int getId_caminhao() {

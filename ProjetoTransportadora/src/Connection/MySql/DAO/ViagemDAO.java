@@ -23,10 +23,44 @@ public class ViagemDAO {
     ResultSet rs;
     ArrayList<Viagem> lista = new ArrayList<>();
     
+    public void salvarDados(Viagem v){
+        String sql = "insert into viagem(numero_viagem, peso, fk_caminhoes) values(?, ?, ?);";
+        String sql_id = "SELECT * FROM viagem ORDER BY id_viagem DESC limit 1;";
+        String sql_viagem_deposito = "insert into viagem_deposito(fk_viagem, fk_deposito) values(?,?);";
+        con = ConnectionFactory.getConnection();
+        try{
+            stmt = con.prepareStatement(sql);
+            stmt.setInt(1, v.getNumero_viagem());
+            stmt.setDouble(2, v.getPeso());
+            stmt.setInt(3, v.getId_caminhao());
+            stmt.executeUpdate();
+            stmt.close();
+            
+            stmt = con.prepareStatement(sql_id);
+            rs = stmt.executeQuery();
+            int id_viagem = 0;
+            while(rs.next()){
+                id_viagem = rs.getInt("id_viagem");
+            }
+            stmt.close();
+            
+            stmt = con.prepareStatement(sql_viagem_deposito);
+            stmt.setInt(1, id_viagem);
+            stmt.setInt(2, v.getId_deposito());
+            stmt.executeUpdate();
+            
+            stmt.close();
+            JOptionPane.showMessageDialog(null, "Dados salvos com sucesso!");
+        } catch (SQLException e){
+            JOptionPane.showMessageDialog(null, "Erro ao salvar os dados" + e.toString());
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
     
     public ArrayList<Viagem> pesquisarViagens(){
         String sql = """
-                     select c.id_caminhao, c.cod_licenca, v.numero_viagem, v.peso, d.endereco 
+                     select c.id_caminhao, c.cod_licenca, v.numero_viagem, v.peso, d.id_deposito, d.endereco 
                      from caminhoes as c 
                      inner join viagem as v on v.fk_caminhoes = c.id_caminhao 
                      inner join viagem_deposito as vd on vd.fk_viagem = v.id_viagem 
@@ -44,6 +78,7 @@ public class ViagemDAO {
                 v.setCod_licenca(rs.getInt("cod_licenca"));
                 v.setNumero_viagem(rs.getInt("numero_viagem"));
                 v.setPeso(rs.getDouble("peso"));
+                v.setId_deposito(rs.getInt("id_deposito"));
                 v.setEndereco(rs.getString("endereco"));
                 
                 lista.add(v);
@@ -61,7 +96,7 @@ public class ViagemDAO {
     
     public ArrayList<Viagem> pesquisarViagem(int id){
         String sql = """
-                     select c.id_caminhao, c.cod_licenca, v.numero_viagem, v.peso, d.endereco 
+                     select c.id_caminhao, c.cod_licenca, v.numero_viagem, v.peso, d.id_deposito, d.endereco 
                      from caminhoes as c 
                      inner join viagem as v on v.fk_caminhoes = c.id_caminhao 
                      inner join viagem_deposito as vd on vd.fk_viagem = v.id_viagem 
@@ -81,6 +116,7 @@ public class ViagemDAO {
                 v.setCod_licenca(rs.getInt("cod_licenca"));
                 v.setNumero_viagem(rs.getInt("numero_viagem"));
                 v.setPeso(rs.getDouble("peso"));
+                v.setId_deposito(rs.getInt("id_deposito"));
                 v.setEndereco(rs.getString("endereco"));
                 
                 lista.add(v);

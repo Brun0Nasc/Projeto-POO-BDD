@@ -163,7 +163,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnSalvar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnSalvar.setText("Salvar");
         btnSalvar.setToolTipText("Salvar");
-        btnSalvar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalvar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnSalvar.setMaximumSize(new java.awt.Dimension(79, 25));
         btnSalvar.setMinimumSize(new java.awt.Dimension(79, 25));
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -176,7 +176,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnCancelar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnCancelar.setText("Limpar");
         btnCancelar.setToolTipText("Cancelar");
-        btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
@@ -217,7 +217,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         txtCapacidade.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jpnArmazens.add(txtCapacidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 70, -1));
 
-        tbArmazem.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tbArmazem.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -279,7 +278,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnSalvarCaminhao.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnSalvarCaminhao.setText("Salvar");
         btnSalvarCaminhao.setToolTipText("Salvar");
-        btnSalvarCaminhao.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalvarCaminhao.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnSalvarCaminhao.setMaximumSize(new java.awt.Dimension(79, 25));
         btnSalvarCaminhao.setMinimumSize(new java.awt.Dimension(79, 25));
         btnSalvarCaminhao.addActionListener(new java.awt.event.ActionListener() {
@@ -291,7 +290,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnLimparCaminhao.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnLimparCaminhao.setText("Limpar");
         btnLimparCaminhao.setToolTipText("Cancelar");
-        btnLimparCaminhao.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLimparCaminhao.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnLimparCaminhao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLimparCaminhaoActionPerformed(evt);
@@ -317,7 +316,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         txtCapacidadeCaminhao.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
 
-        tbCaminhoes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tbCaminhoes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -445,7 +443,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         pnDeposito.setBackground(new java.awt.Color(153, 255, 255));
         pnDeposito.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        tbDeposito1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tbDeposito1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -492,7 +489,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(pnDepositoLayout.createSequentialGroup()
                         .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                         .addGroup(pnDepositoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btCancDep, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btConfDep, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -516,13 +513,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btConfDep.setEnabled(false);
 
         jpnViagens.add(pnDeposito);
-        pnDeposito.setBounds(190, 230, 420, 210);
+        pnDeposito.setBounds(200, 230, 420, 210);
         pnDeposito.setVisible(false);
 
         pnCaminhao.setBackground(new java.awt.Color(153, 255, 255));
         pnCaminhao.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        tbCaminhoes1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tbCaminhoes1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -569,7 +565,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(pnCaminhaoLayout.createSequentialGroup()
                         .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
                         .addGroup(pnCaminhaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btCancCam, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btConf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -583,7 +579,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel5))
                     .addComponent(btCancCam))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addComponent(btConf)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -600,12 +596,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Viagens");
         jpnViagens.add(jLabel4);
-        jLabel4.setBounds(10, 11, 71, 22);
+        jLabel4.setBounds(10, 11, 81, 22);
 
         btnSalvarViagem.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnSalvarViagem.setText("Salvar");
         btnSalvarViagem.setToolTipText("Salvar");
-        btnSalvarViagem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalvarViagem.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnSalvarViagem.setMaximumSize(new java.awt.Dimension(79, 25));
         btnSalvarViagem.setMinimumSize(new java.awt.Dimension(79, 25));
         btnSalvarViagem.addActionListener(new java.awt.event.ActionListener() {
@@ -619,7 +615,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnLimparViagem.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnLimparViagem.setText("Limpar");
         btnLimparViagem.setToolTipText("Cancelar");
-        btnLimparViagem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLimparViagem.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnLimparViagem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLimparViagemActionPerformed(evt);
@@ -633,28 +629,27 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lblIdCaminhao.setForeground(new java.awt.Color(255, 255, 255));
         lblIdCaminhao.setText("ID(Caminhão)");
         jpnViagens.add(lblIdCaminhao);
-        lblIdCaminhao.setBounds(30, 47, 84, 15);
+        lblIdCaminhao.setBounds(20, 50, 94, 15);
 
         lblCodLicenca.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblCodLicenca.setForeground(new java.awt.Color(255, 255, 255));
         lblCodLicenca.setText("Código da Licença");
         jpnViagens.add(lblCodLicenca);
-        lblCodLicenca.setBounds(217, 47, 110, 15);
+        lblCodLicenca.setBounds(200, 50, 128, 15);
 
         txtIdCaminhaoViagem.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jpnViagens.add(txtIdCaminhaoViagem);
-        txtIdCaminhaoViagem.setBounds(123, 44, 38, 21);
+        txtIdCaminhaoViagem.setBounds(123, 44, 38, 20);
 
         txtCodCaminhaoViagem.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jpnViagens.add(txtCodCaminhaoViagem);
-        txtCodCaminhaoViagem.setBounds(333, 44, 210, 21);
+        txtCodCaminhaoViagem.setBounds(333, 44, 210, 20);
         txtCodCaminhaoViagem.setEnabled(false);
 
         txtNumViagem.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jpnViagens.add(txtNumViagem);
-        txtNumViagem.setBounds(123, 78, 76, 21);
+        txtNumViagem.setBounds(123, 78, 76, 20);
 
-        tbViagens.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tbViagens.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -684,7 +679,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         jpnViagens.add(btnPesquisarViagem);
-        btnPesquisarViagem.setBounds(10, 170, 90, 22);
+        btnPesquisarViagem.setBounds(10, 170, 96, 24);
 
         btnAlterarViagem.setText("Alterar");
         btnAlterarViagem.addActionListener(new java.awt.event.ActionListener() {
@@ -693,7 +688,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         jpnViagens.add(btnAlterarViagem);
-        btnAlterarViagem.setBounds(430, 170, 80, 22);
+        btnAlterarViagem.setBounds(430, 170, 80, 24);
 
         btnExcluirViagem.setText("Excluir");
         btnExcluirViagem.addActionListener(new java.awt.event.ActionListener() {
@@ -702,23 +697,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         jpnViagens.add(btnExcluirViagem);
-        btnExcluirViagem.setBounds(522, 170, 80, 22);
+        btnExcluirViagem.setBounds(522, 170, 80, 24);
 
         lblNumViagem.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblNumViagem.setForeground(new java.awt.Color(255, 255, 255));
         lblNumViagem.setText("Nº da Viagem");
         jpnViagens.add(lblNumViagem);
-        lblNumViagem.setBounds(36, 81, 81, 15);
+        lblNumViagem.setBounds(20, 80, 95, 15);
 
         lblPeso.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblPeso.setForeground(new java.awt.Color(255, 255, 255));
         lblPeso.setText("Peso");
         jpnViagens.add(lblPeso);
-        lblPeso.setBounds(298, 81, 29, 15);
+        lblPeso.setBounds(298, 81, 35, 15);
 
         txtPesoViagem.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jpnViagens.add(txtPesoViagem);
-        txtPesoViagem.setBounds(333, 78, 76, 21);
+        txtPesoViagem.setBounds(333, 78, 76, 20);
 
         lblTon.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         lblTon.setForeground(new java.awt.Color(255, 255, 255));
@@ -730,11 +725,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lblEnderecoViagem.setForeground(new java.awt.Color(255, 255, 255));
         lblEnderecoViagem.setText("Destino");
         jpnViagens.add(lblEnderecoViagem);
-        lblEnderecoViagem.setBounds(70, 114, 47, 15);
+        lblEnderecoViagem.setBounds(60, 110, 55, 15);
 
         txtEnderecoViagem.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jpnViagens.add(txtEnderecoViagem);
-        txtEnderecoViagem.setBounds(123, 111, 420, 21);
+        txtEnderecoViagem.setBounds(123, 111, 420, 20);
         txtEnderecoViagem.setEnabled(false);
 
         btSelDep.setText("...");
@@ -744,7 +739,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         jpnViagens.add(btSelDep);
-        btSelDep.setBounds(550, 110, 22, 22);
+        btSelDep.setBounds(550, 110, 24, 24);
 
         btSelCam.setText("...");
         btSelCam.addActionListener(new java.awt.event.ActionListener() {
@@ -753,7 +748,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         jpnViagens.add(btSelCam);
-        btSelCam.setBounds(167, 43, 22, 22);
+        btSelCam.setBounds(167, 43, 24, 24);
 
         jTabbedPane1.addTab("Viagens", jpnViagens);
 
@@ -771,7 +766,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnSalvarDeposito.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnSalvarDeposito.setText("Salvar");
         btnSalvarDeposito.setToolTipText("Salvar");
-        btnSalvarDeposito.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalvarDeposito.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnSalvarDeposito.setMaximumSize(new java.awt.Dimension(79, 25));
         btnSalvarDeposito.setMinimumSize(new java.awt.Dimension(79, 25));
         btnSalvarDeposito.addActionListener(new java.awt.event.ActionListener() {
@@ -783,7 +778,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnLimparDeposito.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnLimparDeposito.setText("Limpar");
         btnLimparDeposito.setToolTipText("Cancelar");
-        btnLimparDeposito.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLimparDeposito.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnLimparDeposito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLimparDepositoActionPerformed(evt);
@@ -809,7 +804,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         txtCapacidadeDeposito.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
 
-        tbDeposito.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tbDeposito.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -868,8 +862,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblCapacidade3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpnDepositosLayout.createSequentialGroup()
-                        .addGroup(jpnDepositosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jpnDepositosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jpnDepositosLayout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addGroup(jpnDepositosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6)
+                                    .addGroup(jpnDepositosLayout.createSequentialGroup()
+                                        .addComponent(btnPesquisarDeposito)
+                                        .addGap(232, 232, 232)
+                                        .addComponent(btnSalvarDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnAlterarCaminhao1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnDepositosLayout.createSequentialGroup()
                                 .addGap(30, 30, 30)
                                 .addComponent(lblId2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -877,22 +882,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
                                 .addGap(22, 22, 22)
                                 .addComponent(lblEndereco2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtEnderecoDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpnDepositosLayout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addGroup(jpnDepositosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jpnDepositosLayout.createSequentialGroup()
-                                        .addComponent(btnPesquisarDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(238, 238, 238)
-                                        .addComponent(btnSalvarDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnAlterarCaminhao1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel6))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jpnDepositosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnExcluirCaminhao1, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-                            .addComponent(btnLimparDeposito, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(18, 18, 18))
+                                .addComponent(txtEnderecoDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                        .addGroup(jpnDepositosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnLimparDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnExcluirCaminhao1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jpnDepositosLayout.setVerticalGroup(
@@ -920,9 +915,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(btnPesquisarDeposito)
                     .addGroup(jpnDepositosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnAlterarCaminhao1)
-                        .addComponent(btnSalvarDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSalvarDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnExcluirCaminhao1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -1025,6 +1020,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void btnSalvarViagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarViagemActionPerformed
         // TODO add your handling code here:
+        cadastrarViagem();
+        listarViagens();
+        limparCamposViagens();
     }//GEN-LAST:event_btnSalvarViagemActionPerformed
 
     private void btnLimparViagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparViagemActionPerformed
@@ -1080,6 +1078,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void btnSalvarDepositoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarDepositoActionPerformed
         // TODO add your handling code here:
+        cadastrarDeposito();
+        listarDepositos();
     }//GEN-LAST:event_btnSalvarDepositoActionPerformed
 
     private void btnLimparDepositoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparDepositoActionPerformed
@@ -1143,6 +1143,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private boolean validaCamposDeposito() {
         return !(this.txtCapacidadeDeposito.getText().equals("") || this.txtEnderecoDeposito.getText().equals(""));
     }
+    private boolean validaCamposViagem() {
+        return !(this.txtIdCaminhaoViagem.getText().equals("") || this.txtEnderecoViagem.getText().equals("") || this.txtNumViagem.getText().equals("")
+                || this.txtPesoViagem.getText().equals(""));
+    }
     
     private void cadastrarArmazem(){
         if (validaCamposObrigatorios()){
@@ -1168,6 +1172,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 c.setCod_licenca(Integer.parseInt(txtCodCaminhao.getText()));
                 c.setCapacidade(Double.parseDouble(txtCapacidadeCaminhao.getText()));
                 mc.salvarDados(c);
+        } else {
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+        }
+    }
+    private void cadastrarViagem(){
+        if (validaCamposViagem()){
+                v.setId_caminhao(Integer.parseInt(txtIdCaminhaoViagem.getText()));
+                v.setNumero_viagem(Integer.parseInt(txtNumViagem.getText()));
+                v.setPeso(Double.parseDouble(txtPesoViagem.getText()));
+                mv.salvarDados(v);
         } else {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
         }
@@ -1354,6 +1368,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         int setar = tbDeposito1.getSelectedRow();
         
         txtEnderecoViagem.setText(tbDeposito1.getModel().getValueAt(setar, 2).toString());
+        v.setId_deposito(Integer.parseInt(tbDeposito1.getModel().getValueAt(setar, 0).toString()));
     }
     private void carregarCamposViagem(){
         int setar = tbViagens.getSelectedRow();
