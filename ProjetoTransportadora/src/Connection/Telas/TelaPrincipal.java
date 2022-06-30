@@ -1037,7 +1037,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void btnPesquisarViagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarViagemActionPerformed
         // TODO add your handling code here:
-        listarViagens();
+        if(txtIdCaminhaoViagem.getText().equals("")){
+            listarViagens();
+        } else {
+            pesquisaIdViagem();
+        }
+        
     }//GEN-LAST:event_btnPesquisarViagemActionPerformed
 
     private void btnAlterarViagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarViagemActionPerformed
@@ -1322,6 +1327,26 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Listar CaminhaoId: " + e);
+        }
+    }
+    private void pesquisaIdViagem(){
+        try {
+            DefaultTableModel model = (DefaultTableModel) tbViagens.getModel();
+            model.setNumRows(0);
+            
+            ArrayList<Viagem> lista = mv.pesquisarViagem(Integer.parseInt(txtIdCaminhaoViagem.getText()));
+            
+            for(int i = 0; i < lista.size(); i++){
+                   model.addRow(new Object[]{
+                   lista.get(i).getId_caminhao(),
+                   lista.get(i).getCod_licenca(),
+                   lista.get(i).getNumero_viagem(),
+                   lista.get(i).getPeso(),
+                   lista.get(i).getEndereco() 
+               });
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Listar ViagemId: " + e);
         }
     }
     private void pesquisaIdDeposito(){
