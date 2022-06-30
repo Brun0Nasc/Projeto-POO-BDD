@@ -489,7 +489,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(pnDepositoLayout.createSequentialGroup()
                         .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                         .addGroup(pnDepositoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btCancDep, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btConfDep, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -513,7 +513,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btConfDep.setEnabled(false);
 
         jpnViagens.add(pnDeposito);
-        pnDeposito.setBounds(200, 230, 420, 210);
+        pnDeposito.setBounds(200, 240, 420, 210);
         pnDeposito.setVisible(false);
 
         pnCaminhao.setBackground(new java.awt.Color(153, 255, 255));
@@ -596,7 +596,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Viagens");
         jpnViagens.add(jLabel4);
-        jLabel4.setBounds(10, 11, 81, 22);
+        jLabel4.setBounds(10, 11, 71, 22);
 
         btnSalvarViagem.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnSalvarViagem.setText("Salvar");
@@ -622,33 +622,35 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         jpnViagens.add(btnLimparViagem);
-        btnLimparViagem.setBounds(522, 14, 80, 21);
+        btnLimparViagem.setBounds(540, 0, 80, 21);
 
         lblIdCaminhao.setBackground(new java.awt.Color(255, 255, 255));
         lblIdCaminhao.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblIdCaminhao.setForeground(new java.awt.Color(255, 255, 255));
         lblIdCaminhao.setText("ID(Caminhão)");
         jpnViagens.add(lblIdCaminhao);
-        lblIdCaminhao.setBounds(20, 50, 94, 15);
+        lblIdCaminhao.setBounds(30, 40, 84, 15);
 
         lblCodLicenca.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblCodLicenca.setForeground(new java.awt.Color(255, 255, 255));
         lblCodLicenca.setText("Código da Licença");
         jpnViagens.add(lblCodLicenca);
-        lblCodLicenca.setBounds(200, 50, 128, 15);
+        lblCodLicenca.setBounds(220, 40, 110, 15);
 
         txtIdCaminhaoViagem.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jpnViagens.add(txtIdCaminhaoViagem);
-        txtIdCaminhaoViagem.setBounds(123, 44, 38, 20);
+        txtIdCaminhaoViagem.setBounds(120, 30, 38, 25);
 
         txtCodCaminhaoViagem.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jpnViagens.add(txtCodCaminhaoViagem);
-        txtCodCaminhaoViagem.setBounds(333, 44, 210, 20);
+        txtCodCaminhaoViagem.setBounds(340, 30, 210, 25);
         txtCodCaminhaoViagem.setEnabled(false);
 
         txtNumViagem.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        txtNumViagem.setMinimumSize(new java.awt.Dimension(64, 25));
+        txtNumViagem.setPreferredSize(new java.awt.Dimension(64, 43));
         jpnViagens.add(txtNumViagem);
-        txtNumViagem.setBounds(123, 78, 76, 20);
+        txtNumViagem.setBounds(120, 70, 76, 23);
 
         tbViagens.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -679,7 +681,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         jpnViagens.add(btnPesquisarViagem);
-        btnPesquisarViagem.setBounds(10, 170, 96, 24);
+        btnPesquisarViagem.setBounds(10, 170, 90, 22);
 
         btnAlterarViagem.setText("Alterar");
         btnAlterarViagem.addActionListener(new java.awt.event.ActionListener() {
@@ -688,7 +690,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         jpnViagens.add(btnAlterarViagem);
-        btnAlterarViagem.setBounds(430, 170, 80, 24);
+        btnAlterarViagem.setBounds(430, 170, 80, 22);
 
         btnExcluirViagem.setText("Excluir");
         btnExcluirViagem.addActionListener(new java.awt.event.ActionListener() {
@@ -697,39 +699,39 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         jpnViagens.add(btnExcluirViagem);
-        btnExcluirViagem.setBounds(522, 170, 80, 24);
+        btnExcluirViagem.setBounds(522, 170, 80, 22);
 
         lblNumViagem.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblNumViagem.setForeground(new java.awt.Color(255, 255, 255));
         lblNumViagem.setText("Nº da Viagem");
         jpnViagens.add(lblNumViagem);
-        lblNumViagem.setBounds(20, 80, 95, 15);
+        lblNumViagem.setBounds(30, 80, 81, 15);
 
         lblPeso.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblPeso.setForeground(new java.awt.Color(255, 255, 255));
         lblPeso.setText("Peso");
         jpnViagens.add(lblPeso);
-        lblPeso.setBounds(298, 81, 35, 15);
+        lblPeso.setBounds(300, 80, 29, 15);
 
         txtPesoViagem.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jpnViagens.add(txtPesoViagem);
-        txtPesoViagem.setBounds(333, 78, 76, 20);
+        txtPesoViagem.setBounds(340, 70, 76, 25);
 
         lblTon.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         lblTon.setForeground(new java.awt.Color(255, 255, 255));
         lblTon.setText("ton");
         jpnViagens.add(lblTon);
-        lblTon.setBounds(415, 83, 90, 13);
+        lblTon.setBounds(420, 80, 90, 13);
 
         lblEnderecoViagem.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblEnderecoViagem.setForeground(new java.awt.Color(255, 255, 255));
         lblEnderecoViagem.setText("Destino");
         jpnViagens.add(lblEnderecoViagem);
-        lblEnderecoViagem.setBounds(60, 110, 55, 15);
+        lblEnderecoViagem.setBounds(60, 120, 47, 15);
 
         txtEnderecoViagem.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jpnViagens.add(txtEnderecoViagem);
-        txtEnderecoViagem.setBounds(123, 111, 420, 20);
+        txtEnderecoViagem.setBounds(120, 110, 430, 25);
         txtEnderecoViagem.setEnabled(false);
 
         btSelDep.setText("...");
@@ -739,7 +741,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         jpnViagens.add(btSelDep);
-        btSelDep.setBounds(550, 110, 24, 24);
+        btSelDep.setBounds(560, 110, 22, 22);
 
         btSelCam.setText("...");
         btSelCam.addActionListener(new java.awt.event.ActionListener() {
@@ -748,7 +750,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         jpnViagens.add(btSelCam);
-        btSelCam.setBounds(167, 43, 24, 24);
+        btSelCam.setBounds(170, 30, 22, 22);
 
         jTabbedPane1.addTab("Viagens", jpnViagens);
 
