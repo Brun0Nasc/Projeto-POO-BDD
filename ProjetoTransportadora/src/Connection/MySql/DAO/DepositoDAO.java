@@ -22,7 +22,7 @@ public class DepositoDAO {
     ResultSet rs;
     ArrayList<Deposito> lista = new ArrayList<>();
     
-    public void salvarDeposito(Deposito d){
+    public void salvarDados(Deposito d){
         String sql = "INSERT INTO deposito (capacidade, endereco) VALUES (?,?)";
         con = ConnectionFactory.getConnection();
         try{

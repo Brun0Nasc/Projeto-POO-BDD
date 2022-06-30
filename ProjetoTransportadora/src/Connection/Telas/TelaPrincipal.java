@@ -1140,6 +1140,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private boolean validaCamposCaminhoes() {
         return !(this.txtCodCaminhao.getText().equals("") || this.txtCapacidadeCaminhao.getText().equals(""));
     }
+    private boolean validaCamposDeposito() {
+        return !(this.txtCapacidadeDeposito.getText().equals("") || this.txtEnderecoDeposito.getText().equals(""));
+    }
     
     private void cadastrarArmazem(){
         if (validaCamposObrigatorios()){
@@ -1147,6 +1150,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 a.setnCaminhoes(Integer.parseInt(txtCaminhoes.getText()));
                 a.setCapacidade(Double.parseDouble(txtCapacidade.getText()));
                 m.salvarDados(a);
+        } else {
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+        }
+    }
+    private void cadastrarDeposito(){
+        if (validaCamposDeposito()){
+                d.setCapacidade(Double.parseDouble(txtCapacidadeDeposito.getText()));
+                d.setEndereco(txtEnderecoDeposito.getText());
+                md.salvarDados(d);
         } else {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
         }
