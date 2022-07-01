@@ -16,6 +16,7 @@ Projeto final das disciplinas de <b>Programação Orientada a Objetos I</b> em c
 <p>Bruno do Nascimento de Brito</p>
 <p>José Lenilson Xavier Pereira</p>
 <p>Ivander Breno Lima Silva</p>
+<hr/>
 <h3>Membros que estão apenas em BD-I</h3>
 <p>Breno Robert do Nascimento</p>
 <p>Jocias Barbosa do Nascimento</p>
