@@ -13,7 +13,6 @@ create table viagem(
 	id_viagem int primary key auto_increment,
     numero_viagem int unique,
     peso double,
-    volume double,
     fk_caminhoes int,
     foreign key (fk_caminhoes) references caminhoes(id_caminhao) on delete cascade
 
